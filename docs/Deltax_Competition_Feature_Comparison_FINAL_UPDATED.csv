@@ -1,0 +1,24 @@
+Area,Updated decision,Priority
+Competition ranking,"Hearts = community engagement; Builder points = separate metric; verify code before technical conclusions",High
+Risk,"Deterministic Risk Authority + ABSTAIN + fail-closed",Critical
+Position/Exit,"Hard stop + monotonic trailing + TP + partial/time/signal/regime/emergency exits",Critical
+Execution,"ExecutionIntent, idempotency, freshness/spread/slippage vetoes",Critical
+Reconciliation,"Orders/fills/positions/account + restart recovery",Critical
+Database,"PostgreSQL authoritative state + decision ledger",Critical
+Validation,"OOS/walk-forward/permutation/cost/MAE-MFE",High
+MEXC,"Paper adapter first; existing live workflow protected",Critical
+Alpaca,"Shared core; stocks/ETFs/futures/options adapter second",High
+
+Capability,Preferred source,Action,Verification
+Core architecture,AURA,KEEP,Existing
+Risk Gate,AURA + verified competition gates,ADAPT,Code/tests required
+ABSTAIN,Competition evidence + AURA,ADD/ADAPT,Replay tests
+Position/Exit,Deltax V2 + strongest verified competitor,ADAPT,State tests
+Trailing stop,Best verified implementation,TAKE/ADAPT,Monotonic tests
+News/events/analyst,Deltax + provider adapters,ADAPT,Freshness/provenance
+Sector/ETF rotation,Deltax + verified competition patterns,ADAPT,Backtest/OOS
+Crypto regime/rotation,AURA + crypto-specific sources,KEEP/ADAPT,Replay
+Reconciliation,Aegis/competition patterns + AURA state,ADAPT,Failure tests
+Validation,AURA + EdgeStack,KEEP/ADAPT,OOS/permutation
+Execution,New MEXC adapter,BUILD,Paper lifecycle tests
+Database,PostgreSQL,BUILD/ADAPT,Restart reconstruction
